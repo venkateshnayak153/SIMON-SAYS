@@ -1,0 +1,72 @@
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #0000aa;
+      font-family: 'Press Start 2P', cursive;
+      color: white;
+      text-align: center;
+    }
+
+    #level-title {
+      font-size: 3rem;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    #high-score {
+      font-size: 1rem;
+      margin-bottom: 80px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 30px cyan, 0 0 60px cyan; }
+      to { text-shadow: 0 0 10px #0000AA, 0 0 20px #0000AA; }
+    }
+
+    .container {
+      width: min(95vw, 500px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .btn {
+      width: 14vmin;
+      height: 14vmin;
+      max-width: 140px;
+      max-height: 140px;
+      border: 6px solid #000;
+      border-radius: 18%;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.1s;
+    }
+
+    .green { background: green; }
+    .red { background: red; }
+    .yellow { background: yellow; }
+    .blue { background: blue; }
+    .purple { background: purple; }
+    .orange { background: orange; }
+    .pink { background: hotpink; }
+    .cyan { background: cyan; }
+    .lime { background: lime; }
+
+    .pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+  transform: translateY(4px);
+}
+
+.flash {
+  opacity: 0.2;
+  transition: opacity 0.2s;
+}
+    .game-over { background-color: red; opacity: 0.8; }
