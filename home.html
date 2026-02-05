@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page | Simon Says</title>
+
+    <!-- Fonts & Bootstrap -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,24 +23,48 @@
             background-color: #0000AA;
             display: flex;
             flex-direction: column;
-            height: 100vh;
-            width: 100%;
+            min-height: 100vh;
             justify-content: center;
             align-items: center;
             text-align: center;
-            animation: fade 5s ease both;
+            animation: fade 1.5s ease both;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 60px;
             color: white;
-             animation: glow 2s ease-in-out infinite alternate;
-                }
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        a{
+            color: white;
+        }
 
+        /* ===== Leaderboard Button ===== */
+        .leaderboard-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffc107;
+            color: black;
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 12px;
+            box-shadow: 0 4px 0 #b58900;
+        }
+
+        .leaderboard-btn:hover {
+            background-color: #ffb300;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #b58900;
+        }
+
+        /* ===== Instructions ===== */
         .instru {
-            font-size: 14px;
-            padding-top: 20px;
+            font-size: 13px;
+            max-width: 500px;
+            margin-bottom: 25px;
         }
 
         .instru ol li {
@@ -46,46 +72,70 @@
             margin-bottom: 8px;
         }
 
-        h4 {
-            margin-bottom: 20px;
+        /* ===== Player Card ===== */
+        .player-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid white;
+            border-radius: 18px;
+            padding: 25px 30px;
+            width: 320px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
         }
 
+        .player-card h5 {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: cyan;
+        }
+
+        #playerName {
+            width: 100%;
+            background-color: #0000AA;
+            border: 2px solid cyan;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 12px;
+            color: white;
+            text-align: center;
+            outline: none;
+        }
+
+        #playerName::placeholder {
+            color: #ccccff;
+        }
+
+        #playerName:focus {
+            box-shadow: 0 0 15px cyan;
+        }
+
+        /* ===== Difficulty ===== */
         .dropdown-menu {
             background-color: #0000AA;
-            border: 1px solid #fff;
-
+            border: 1px solid white;
         }
 
         .dropdown-item {
             color: white;
+            cursor: pointer;
         }
 
-        .title-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 150px;
-        }
-
-        #difficultyBtn {
-            margin-top: 10px;
-        }
-
+        /* ===== Start Button ===== */
         .link {
             margin-top: 20px;
+            padding: 14px 35px;
+            background-color: #00bfff;
+            border-radius: 18px;
             text-decoration: none;
+            font-size: 14px;
+            box-shadow: 0 5px 0 #0077aa;
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            border-radius: 15px;
         }
 
         .link:hover {
-            background-color: #0056b3;
-            color: white;
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #0077aa;
+            background-color: #00aadd;
         }
 
         @keyframes fade {
@@ -93,7 +143,6 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -103,9 +152,7 @@
         @keyframes glow {
             from {
                 text-shadow: 0 0 20px cyan, 0 0 40px cyan;
-
             }
-
             to {
                 text-shadow: 0 0 10px #0000AA, 0 0 20px #0000AA;
             }
@@ -114,68 +161,108 @@
 </head>
 
 <body>
-    <div class="title-container">
-        <h1>SIMON SAYS GAME</h1>
-    </div>
 
+    <!-- Leaderboard -->
+    <a href="Leaderboard.html" class="leaderboard-btn">🏆 Leaderboard</a>
+
+    <h1>SIMON SAYS GAME</h1>
+
+    <!-- Instructions -->
     <div class="instru">
         <h4>🎮 How to Play</h4>
         <ol>
-            <li>The game will show a sequence of colors (one at a time).</li>
-            <li>Your job is to remember the sequence.</li>
-            <li>Each round, Simon will add one new color to the sequence.</li>
-            <li>The sequence keeps getting longer and faster.</li>
+            <li>Watch the color sequence carefully.</li>
+            <li>Repeat the sequence in order.</li>
+            <li>Each round adds one new color.</li>
+            <li>Game speed increases over time.</li>
         </ol>
     </div>
 
+    <!-- Player Name Card -->
+    <div class="player-card">
+        <h5>PLAYER NAME</h5>
+        <input type="text" id="playerName" placeholder="Enter your name">
+    </div>
+
+    <!-- Difficulty -->
     <div class="dropdown">
         <button id="difficultyBtn" class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
             Select Difficulty
         </button>
-
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" data-value="Easy">Easy</a></li>
             <li><a class="dropdown-item" data-value="Hard">Hard</a></li>
         </ul>
     </div>
-    <a class="link" href="Easy.html">START</a>
 
+    <!-- Start -->
+    <a class="link" href="Easy.html">START GAME</a>
+
+    <!-- JS -->
     <script>
-        let text = "SIMON SAYS GAME";
-        let i = 1;
-        let forward = true;
+       const titleText = "SIMON SAYS GAME";
+    let index = 1;
+    let forward = true;
 
-        function animate() {
-            let title = document.querySelector("h1");
-            title.innerHTML = text.substring(0, i);
-            if (forward) {
-                i++;
-                if (i > text.length) {
-                    forward = false;
-                    i = text.length - 1;
-                }
-            } else {
-                i--;
-                if (i < 0) {
-                    forward = true;
-                    i = 1;
-                }
+    function animateTitle() {
+        const title = document.querySelector("h1");
+        title.innerHTML = titleText.substring(0, index);
+
+        if (forward) {
+            index++;
+            if (index > titleText.length) {
+                forward = false;
+                index = titleText.length - 1;
             }
-            setTimeout(animate, 150);
+        } else {
+            index--;
+            if (index < 1) {
+                forward = true;
+                index = 1;
+            }
+        }
+        setTimeout(animateTitle, 150);
+    }
+
+    animateTitle();
+
+    /* ===== Difficulty Selection ===== */
+    document.querySelectorAll(".dropdown-item").forEach(item => {
+        item.addEventListener("click", function () {
+            document.getElementById("difficultyBtn").innerText = this.dataset.value;
+            document.querySelector(".link").href = this.dataset.value + ".html";
+        });
+    });
+
+    /* ===== User Management ===== */
+    function getUsers() {
+        return JSON.parse(localStorage.getItem("users")) || [];
+    }
+
+    function saveUsers(users) {
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    document.querySelector(".link").addEventListener("click", function (e) {
+        const name = document.getElementById("playerName").value.trim();
+        if (name === "") {
+            alert("Enter player name!");
+            e.preventDefault();
+            return;
         }
 
-        animate();
+        let users = getUsers();
+        let user = users.find(u => u.name === name);
 
-        document.querySelectorAll(".dropdown-item").forEach(item => {
-            item.addEventListener("click", function () {
-                var diffculty = document.getElementById("difficultyBtn");
-                diffculty.innerText = this.dataset.value;
-                if (diffculty.innerText != "Easy") {
-                    var l = document.querySelector(".link");
-                    l.href = this.dataset.value + ".html";
-                }
-            });
-        });
+        if (!user) {
+            user = { name, easyScore: 0, hardScore: 0 };
+            users.push(user);
+            saveUsers(users);
+        }
+
+        localStorage.setItem("currentUser", JSON.stringify(user));
+    });
+    // localStorage.clear();
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
